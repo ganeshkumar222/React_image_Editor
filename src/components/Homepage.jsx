@@ -24,23 +24,23 @@ export const Homepage = () => {
   return (
     <>
       <TopBar></TopBar>
-      <div className="container mt-5 ">
-        <div className="w-full max-w-xs mx-auto">
-          <label
-            htmlFor="file-upload"
-            className="cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-12"
-          >
-            Upload File
-          </label>
-          <input
-            id="file-upload"
-            type="file"
-            className="hidden"
-            onChange={() => {
-              handleChange();
-            }}
-          />
-        </div>
+
+      <div className="w-full max-w-xs mx-auto mt-5">
+        <label
+          htmlFor="file-upload"
+          className="cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-12"
+        >
+          Upload File
+        </label>
+        <input
+          id="file-upload"
+          type="file"
+          className="hidden"
+          onChange={() => {
+            handleChange();
+          }}
+        />
+
         <br />
         {image ? (
           <>
