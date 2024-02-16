@@ -4,6 +4,7 @@ export const ContextApi = ({ children }) => {
   let [image, setImage] = useState();
   let [croppedImages, setCroppedImages] = useState([]);
   let [paintedImages, setPaintedImages] = useState([]);
+  let [currentImage, setCurrentImage] = useState();
   return (
     <>
       <Imagecontext.Provider
@@ -14,6 +15,8 @@ export const ContextApi = ({ children }) => {
           setCroppedImages,
           paintedImages,
           setPaintedImages,
+          currentImage,
+          setCurrentImage,
         }}
       >
         {children}

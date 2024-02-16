@@ -4,10 +4,9 @@ import { Imagecontext } from "../utils/ContextApi";
 import { TopBar } from "./TopBar";
 import { toast } from "react-toastify";
 function ImagePainter() {
-  let { paintedImages, setPaintedImages } = useContext(Imagecontext);
+  let { paintedImages, setPaintedImages, currentImage } =
+    useContext(Imagecontext);
 
-  let location = useLocation();
-  let imageUrl = location.pathname.split("paintimage/")[1];
   let navigate = useNavigate();
   const canvasRef = useRef(null);
   const [isPainting, setIsPainting] = useState(false);
@@ -60,15 +59,15 @@ function ImagePainter() {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     const img = new Image();
-    img.width = 400;
-    img.height = 400;
+    img.width = 300;
+    img.height = 300;
 
     img.onload = () => {
       canvas.width = img.width;
       canvas.height = img.height;
       ctx.drawImage(img, 0, 0, img.width, img.height);
     };
-    img.src = imageUrl;
+    img.src = currentImage;
     img.className = "img-fluid";
   }, []);
 
@@ -78,23 +77,35 @@ function ImagePainter() {
 
       <div className="container mt-2">
         <h3 className="h3 text-center mt-2">Image Painter</h3>
-        <div>
-          <input
-            type="color"
-            value={brushColor}
-            onChange={(e) => setBrushColor(e.target.value)}
-          />
-          <input
-            type="range"
-            min="1"
-            max="20"
-            value={brushSize}
-            onChange={(e) => setBrushSize(parseInt(e.target.value))}
-          />
+        <div className="flex p-2">
+          <div className="flex items-center mr-4 ">
+            <label
+              htmlFor="colorPicker"
+              className="text-gray-700 font-semibold mr-4"
+            >
+              Choose a color:
+            </label>
+            <input
+              type="color"
+              id="colorPicker"
+              value={brushColor}
+              onChange={(e) => setBrushColor(e.target.value)}
+              className="appearance-none block w-10 h-10 border border-gray-300 rounded-md shadow-sm focus:outline-none"
+            />
+          </div>
 
-          <button className="btn btn-primary m-1" onClick={saveImage}>
-            Save
-          </button>
+          <div className="flex items-center ml-10">
+            <label htmlFor="brush" className="text-gray-700 font-semibold mr-4">
+              Brush Size:
+            </label>
+            <input
+              type="range"
+              id="brush"
+              value={brushSize}
+              onChange={(e) => setBrushSize(parseInt(e.target.value))}
+              className="appearance-none block w-64 h-3 bg-gray-200 rounded-full focus:outline-none"
+            />
+          </div>
         </div>
         <canvas
           ref={canvasRef}
@@ -102,7 +113,14 @@ function ImagePainter() {
           onMouseUp={endPaint}
           onMouseMove={paint}
           style={{ border: "1px solid #000" }}
+          className="mt-3"
         />
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+          onClick={saveImage}
+        >
+          Save
+        </button>
       </div>
     </>
   );

@@ -1,4 +1,4 @@
-import { useRef, useContext } from "react";
+import { useRef, useContext, useEffect } from "react";
 import Cropper from "react-cropper";
 import "cropperjs/dist/cropper.css";
 import { Imagecontext } from "../utils/ContextApi";
@@ -25,17 +25,20 @@ const ImageCropper = () => {
       <TopBar></TopBar>
 
       <div className="container mt-2 ">
-        <h3 className="h3 text-center">Crop Your Image</h3>
-        <div className="cropclass">
+        <h3 className="text-xl font-semibold text-gray-800 mt-4 ">
+          Crop Your Image
+        </h3>
+        <div className=" mt-2 ">
           <Cropper
-            src={image}
-            style={{ height: 400, width: 400 }}
-            aspectRatio={16 / 9}
-            guides={true}
-            cropBoxResizable={true}
             ref={cropperRef}
+            src={image}
+            style={{ height: "25%", width: "25%" }}
+            guides={false}
           />
-          <button className="btn btn-primary mt-3" onClick={getCroppedImage}>
+          <button
+            className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            onClick={getCroppedImage}
+          >
             Crop Image
           </button>
         </div>
