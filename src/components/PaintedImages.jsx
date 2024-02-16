@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import  { useContext } from "react";
 import { TopBar } from "./TopBar";
-import { useNavigate } from "react-router-dom";
+
 import { Imagecontext } from "../utils/ContextApi";
 import { ClipLoader } from "react-spinners";
 export const PaintedImages = () => {
-  let navigate = useNavigate();
+ 
   let { paintedImages } = useContext(Imagecontext);
   return (
     <>

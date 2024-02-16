@@ -1,4 +1,4 @@
-import { useRef, useContext, useEffect } from "react";
+import { useRef, useContext } from "react";
 import Cropper from "react-cropper";
 import "cropperjs/dist/cropper.css";
 import { Imagecontext } from "../utils/ContextApi";

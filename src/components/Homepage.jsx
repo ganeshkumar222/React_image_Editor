@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import { ClipLoader } from "react-spinners";
 
 export const Homepage = () => {
-  let { image, setImage, currentImage, setCurrentImage } =
+  let { image, setImage,  setCurrentImage } =
     useContext(Imagecontext);
   let navigate = useNavigate();
   let handleChange = () => {
