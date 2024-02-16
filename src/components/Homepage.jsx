@@ -78,7 +78,7 @@ export const Homepage = () => {
           </>
         ) : (
           <>
-            <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center mt-5">
               <ClipLoader color={"#123abc"} loading={true} size={50} />
               <span className="ml-2 text-gray-600">Upload an image</span>
             </div>
